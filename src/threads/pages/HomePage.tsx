@@ -1,6 +1,12 @@
+import { PostCard } from ".."
+
 
 export const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <>
+    <PostCard/>
+    <PostCard/>
+    
+    </>
   )
 }

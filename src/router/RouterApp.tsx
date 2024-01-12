@@ -1,13 +1,13 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { HomePage, PostPage, ProfilePage, Navbar } from "../threads";
+import { HomePage, PostPage, ProfilePage, NavBar } from "../threads";
 
 
 export const RouterApp = () => {
   return (
     <BrowserRouter>
-      <div className="mx-auto w-unit-9xl bg-orange-700 ">
+      <div className="mx-auto w-unit-9xl ">
 
-      <Navbar/>
+      <NavBar/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/profile/:id" element={<ProfilePage/>} />

@@ -1,7 +1,12 @@
+import { ProfileCard } from ".."
 
 export const ProfilePage = () => {
   return (
-    <div>ProfilePage</div>
+    <>
+    <ProfileCard/>
+
+    
+    </>
   )
 }
 
