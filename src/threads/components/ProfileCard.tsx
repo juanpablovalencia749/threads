@@ -8,19 +8,20 @@ export const ProfileCard = () => {
     const [isFollowed, setIsFollowed] = useState(false);
 
     return (
-      <Card  shadow='none' className="bg-primary">
+      <>
+          <Card  shadow='none' className="bg-primary">
         <CardHeader className="justify-between ">
           <div className="flex gap-5">
             <div className="flex flex-col gap-1 items-start justify-center">
-              <h4 className="text-small font-semibold leading-none text-default-600">Zoey Lang</h4>
-              <h5 className="text-small tracking-tight text-default-400">@zoeylang</h5>
+              <h4 className="text-2xl font-semibold leading-none text-white">Zoey Lang</h4>
+              <h5 className="text-small tracking-tight text-white">@zoeylang</h5>
             </div>
           </div>
-          <Avatar isBordered radius="full" size="md" src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4" />
+          <Avatar className="w-20 h-20"  radius="full" size="lg" src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4" />
         </CardHeader>
-        <CardBody className="px-3 py-0 text-small text-default-400">
+        <CardBody className="px-3 py-2 text-small  text-white">
           <p>
-            Frontend developer and UI/UX enthusiast. Join me on this coding adventure!
+            Frontend developer and UI/UX enthusiast. Join me on this coding adventure! lore
           </p>
           <span className="pt-2">
             #FrontendWithZoey 
@@ -29,11 +30,7 @@ export const ProfileCard = () => {
             </span>
           </span>
         </CardBody>
-        <CardFooter className=" justify-between gap-3">
-          <div className="flex gap-1">
-            <p className="font-semibold text-default-400 text-small">4</p>
-            <p className=" text-default-400 text-small">Following</p>
-          </div>
+        <CardFooter className=" justify-between gap-3">        
           <div className="flex gap-1">
             <p className="font-semibold text-default-400 text-small">97.1K</p>
             <p className="text-default-400 text-small">Followers</p>
@@ -50,13 +47,18 @@ export const ProfileCard = () => {
           </Button>   
         </CardFooter>
         <Button
-            className="text-foreground"
+            className="text-white my-6 border"
             color="primary"
             radius="full"
             size="sm"
           >
             Edit
-          </Button>        
+          </Button>
+            <div className="grid grid-cols-2 mb-11">
+            <button className="flex items-center justify-center border-white border-b-4 w-full text-white">Threads</button>
+            <button className="flex items-center justify-center border-white border-b-2 w-full text-white">Replies</button>
+            </div>        
       </Card>
+      </>
   )
 }

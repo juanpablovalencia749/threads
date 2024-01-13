@@ -1,4 +1,5 @@
 import {Card, CardHeader, CardBody, CardFooter, Divider,  Image} from "@nextui-org/react"
+import {  ReactPost } from ".."
 
 export const PostCard = () => {
   return (
@@ -12,10 +13,10 @@ export const PostCard = () => {
             radius="full"
             src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
           />
-        <Divider orientation="vertical" className="h-full bg-white absolute top-20 left-9 w-1" />
+        <Divider orientation="vertical" className="h-[80%] bg-[#333638] absolute top-[70px] left-9 w-[2px]" />
         <div className="flex flex-col w-3/4">
           <p className="text-md text-white">UserName</p>
-          <p className="text-small text-white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur neque nesciunt eos praesentium sapiente quaerat, perferendis quisquam non voluptatem sit facilis est vitae in rerum! Vel impedit quos vitae! Quibusdam.</p>
+          <p className="text-small text-white">Lorem ipsam.</p>
         </div>
       </CardHeader>
 
@@ -29,11 +30,12 @@ export const PostCard = () => {
         height={400} 
       />
     </CardBody>
-    <CardFooter>
-      <p>icons</p>
+    <CardFooter >
+      <ReactPost/>
     </CardFooter>
-    <Divider className="bg-white"/>
+    <Divider className="bg-white my-4"/>
   </Card>
+    {/* <Comment/> */}
   </>
   )
 }
