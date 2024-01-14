@@ -1,6 +1,7 @@
+import threadApi from "../../api/threadsApi";
 import { useForm } from "../../hooks";
-import { authChangeScreen } from "../../store/auth/authSlice";
-import { useAppDispatch, } from "../../store/hook"
+import { onChangeScreen, onLogin } from "../../store/auth/authSlice";
+import { useAppDispatch } from "../../store/hook"
 
 interface LoginForm {
     username: string,
@@ -9,12 +10,26 @@ interface LoginForm {
 
 export const Login = () => {
 
+    const dispatch =useAppDispatch()
+
     const {username, password, handleChange, form} = useForm<LoginForm>({username:'', password:''})
 
-    const dispath = useAppDispatch()
+    const loginSubmit = async (event:React.FormEvent<HTMLFormElement>, username:string, password:string):Promise<void> => {
+        event.preventDefault()
+        // try {
+            const {data} = await threadApi.post('/users/login', {username,password })
+            console.log(data)
+            dispatch(onLogin())
+        // } catch (error) {
+        //     console.log(error);
+        // }
 
+    }
+
+    const dispath = useAppDispatch()
+    
     const handleRegister = () => {
-        dispath(authChangeScreen())
+        dispath(onChangeScreen())
     }
 
   return (
@@ -30,7 +45,7 @@ export const Login = () => {
                       <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
                           Sign in to your account
                       </h1>
-                      <form className="space-y-4 md:space-y-6" >
+                      <form className="space-y-4 md:space-y-6" onSubmit={(event)=>loginSubmit(event, username, password)} >
                           <div>
                               <label  className="block mb-2 text-sm font-medium text-white">Your username</label>
                               <input type="text"

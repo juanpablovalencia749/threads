@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { authChangeScreen } from "../../store/auth/authSlice"
+import { onChangeScreen } from "../../store/auth/authSlice"
 
 export const SingUp = () => {
 
@@ -7,7 +7,7 @@ export const SingUp = () => {
     const dispath = useDispatch()
 
     const handleLogin = () => {
-        dispath(authChangeScreen())
+        dispath(onChangeScreen())
     }
 
     
