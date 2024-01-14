@@ -1,7 +1,15 @@
+import { useForm } from "../../hooks";
 import { authChangeScreen } from "../../store/auth/authSlice";
 import { useAppDispatch, } from "../../store/hook"
 
+interface LoginForm {
+    username: string,
+    password: string
+}
+
 export const Login = () => {
+
+    const {username, password, handleChange, form} = useForm<LoginForm>({username:'', password:''})
 
     const dispath = useAppDispatch()
 
@@ -22,14 +30,27 @@ export const Login = () => {
                       <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
                           Sign in to your account
                       </h1>
-                      <form className="space-y-4 md:space-y-6" action="#">
+                      <form className="space-y-4 md:space-y-6" >
                           <div>
-                              <label  className="block mb-2 text-sm font-medium text-white">Your email</label>
-                              <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" />
+                              <label  className="block mb-2 text-sm font-medium text-white">Your username</label>
+                              <input type="text"
+                               name="username" 
+                               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                               placeholder="username" 
+                               value={username}
+                               onChange={handleChange}
+                               />
+                               
                           </div>
                           <div>
                               <label className="block mb-2 text-sm font-medium text-white">Password</label>
-                              <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                              <input type="password"
+                                     name="password"
+                                     placeholder="password" 
+                                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                                     value={password}
+                                     onChange={handleChange}
+                                     />
                           </div>
                           <div className="flex items-center justify-between">
                               <div className="flex items-start">
@@ -47,6 +68,7 @@ export const Login = () => {
                               Don’t have an account yet? <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
                           </p>
                       </form>
+                      <h1>{JSON.stringify(form)}</h1>
                   </div>
               </div>
           </div>
