@@ -10,7 +10,8 @@ interface AuthState {
 
 const initialState: AuthState = {
   value: true,
-  screen: 'not-authenticated',
+  // screen: 'not-authenticated',
+  screen: 'authenticated',
   user: 'user',
   errorMessage:undefined
 }

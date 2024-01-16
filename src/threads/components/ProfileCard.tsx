@@ -1,11 +1,24 @@
 import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@nextui-org/react";
 import { useState } from "react";
+import threadApi from "../../api/threadsApi";
 
+interface Props {
+  _id:string
+  name:string
+  username:string
+  bio:string
+  followers:string[]
+}
 
+export const ProfileCard:React.FC<Props> = ({_id, name, username,  bio, followers, }) => {
 
-export const ProfileCard = () => {
- 
     const [isFollowed, setIsFollowed] = useState(false);
+    const [following, setFollowing] = useState()
+
+    const toggleFollowStatus = async () => {
+      const {data} = await threadApi.post(`/users/follow/${_id}`)
+      console.log(data); 
+    }
 
     return (
       <>
@@ -13,15 +26,15 @@ export const ProfileCard = () => {
         <CardHeader className="justify-between ">
           <div className="flex gap-5">
             <div className="flex flex-col gap-1 items-start justify-center">
-              <h4 className="text-2xl font-semibold leading-none text-white">Zoey Lang</h4>
-              <h5 className="text-small tracking-tight text-white">@zoeylang</h5>
+              <h4 className="text-2xl font-semibold leading-none text-white">{name}</h4>
+              <h5 className="text-small tracking-tight text-white">@{username}</h5>
             </div>
           </div>
           <Avatar className="w-20 h-20"  radius="full" size="lg" src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4" />
         </CardHeader>
         <CardBody className="px-3 py-2 text-small  text-white">
           <p>
-            Frontend developer and UI/UX enthusiast. Join me on this coding adventure! lore
+            {bio}
           </p>
           <span className="pt-2">
             #FrontendWithZoey 
@@ -32,10 +45,11 @@ export const ProfileCard = () => {
         </CardBody>
         <CardFooter className=" justify-between gap-3">        
           <div className="flex gap-1">
-            <p className="font-semibold text-default-400 text-small">97.1K</p>
+            <p className="font-semibold text-default-400 text-small">{followers.length}</p>
             <p className="text-default-400 text-small">Followers</p>
           </div>
           <Button
+            onClick={toggleFollowStatus}
             className={isFollowed ? "bg-transparent text-foreground border-default-200" : ""}
             color="primary"
             radius="full"

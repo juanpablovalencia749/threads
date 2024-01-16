@@ -17,13 +17,16 @@ export const Login = () => {
     const loginSubmit = async (event:React.FormEvent<HTMLFormElement>, username:string, password:string):Promise<void> => {
         event.preventDefault()
         // try {
-            const {data} = await threadApi.post('/users/login', {username,password })
-            console.log(data)
+            const {data} = await threadApi.post('/users/login', {username, password })
+            // localStorage.setItem('token', _id);
+            // // localStorage.setItem('token-init-date',new Date().getTime() );
             dispatch(onLogin())
-        // } catch (error) {
-        //     console.log(error);
-        // }
-
+            console.log(data);
+            
+         
+            // } catch (error) {
+            //     console.log(error);
+            // }
     }
 
     const dispath = useAppDispatch()

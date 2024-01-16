@@ -22,7 +22,7 @@ export const NavBar = () => {
         </Link>
       </NavbarItem>
       <NavbarItem className="hover:bg-[#2c2c2c] p-4 rounded-lg cursor-pointer">
-        <Link className="text-white" to="/username" >
+        <Link className="text-white" to="/:username" >
           <FaUser className="w-6 h-6"/>
         </Link>
       </NavbarItem>
