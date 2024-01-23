@@ -13,9 +13,10 @@ interface Props {
 export const ProfileCard:React.FC<Props> = ({_id, name, username,  bio, followers, }) => {
 
     const [isFollowed, setIsFollowed] = useState(false);
-    const [following, setFollowing] = useState()
-
-    const toggleFollowStatus = async () => {
+    // const [following, setFollowing] = useState() 
+    
+    
+    const toggleFollowStatus = async () => {      
       const {data} = await threadApi.post(`/users/follow/${_id}`)
       console.log(data); 
     }

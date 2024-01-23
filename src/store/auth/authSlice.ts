@@ -10,8 +10,7 @@ interface AuthState {
 
 const initialState: AuthState = {
   value: true,
-  // screen: 'not-authenticated',
-  screen: 'authenticated',
+  screen: 'checking',
   user: 'user',
   errorMessage:undefined
 }
@@ -30,9 +29,15 @@ export const authSlice = createSlice({
       // state.user = payload;
       state.errorMessage = undefined;
     },
+    // onLogout:( state, { payload } ) => {
+      onLogout:( state ) => {
+      state.screen = 'not-authenticated';
+      // state.user = {};
+      // state.errorMessage = payload;
+    },
   },
 })
 
-export const { onChangeScreen, onLogin } = authSlice.actions
+export const { onChangeScreen, onLogin, onLogout } = authSlice.actions
 
 export default authSlice.reducer
